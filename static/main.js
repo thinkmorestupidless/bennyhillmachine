@@ -70,7 +70,7 @@
 	  $service.start(userInput).then(
 	  		function(response) {
 	  			  $log.log(response);
-	      		getWordCount(response);
+	      		bennyhillify(response);
 	  		},
 	  		function(error) {
 	  			  $log.log(error);
@@ -79,7 +79,7 @@
 	  		});
     };
 
-    function getWordCount(jobID) {
+    function bennyhillify(jobID) {
 
     	$service.status(jobID).then(
     		function(response) {
