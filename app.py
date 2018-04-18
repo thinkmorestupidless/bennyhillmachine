@@ -33,22 +33,23 @@ from models import *
 ##########
 
 def download_and_convert(url):
-	print(url, 'converting')
+	print('1', url, 'converting')
 	source = pafy.new(url)
 	best = source.getbest(preftype="mp4")
 	ts = datetime.datetime.fromtimestamp(time.time()).strftime('%Y%m%d-%H%M%S')
 	input_filename = "/tmp/" + ts + "." + best.extension
-
+	print('1b')
 	best.download(filepath=input_filename)
 	output = VideoFileClip(input_filename)
 	duration = output.duration
-	
+	print('1c')
 	output_filename="/tmp/" + best.title + "." + best.extension
-
+	print('1d')
 	output = output.set_audio(audio).fl_time(lambda t: t * accel, apply_to='mask').set_duration(duration / accel)
+	print('1e')
 	output.write_videofile(output_filename)
 
-	print(url, 'uploading')
+	print('2', url, 'uploading')
 
 	s3 = boto.connect_s3()
 	bucket = s3.get_bucket(os.environ['BUCKET_NAME'])
@@ -58,7 +59,7 @@ def download_and_convert(url):
 
 	output_url = key.generate_url(expires_in=3600)
 
-	print(url, 'complete')
+	print('3', url, 'complete')
 
 	# save the results
 	try:
