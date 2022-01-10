@@ -24,8 +24,12 @@ Now you have all the dependencies, you'll need 3 terminal windows:
 
 ```shell script
 cd dev
-# initialises/runs Postgres database (and user) and Redis containers
+
+# run/initialise Postgres database (and user) and Redis containers
 docker compose up
+
+# setup and execute the database migrations
+python manage.py db upgrade
 ```
 > Postgres data is stored in `dev/.postgres` so if you need to nuke the database you can delete that directory and its contents and rebuild the containers with `rm -rf .postgres && docker compose up --build`
 

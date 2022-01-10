@@ -1,4 +1,3 @@
-from boto.s3.key import Key
 from flask import Flask, render_template, request, jsonify
 from flask_sqlalchemy import SQLAlchemy
 from moviepy.video.io.VideoFileClip import VideoFileClip, AudioFileClip
