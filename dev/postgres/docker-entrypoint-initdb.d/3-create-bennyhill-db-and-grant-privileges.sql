@@ -1,0 +1,2 @@
+CREATE DATABASE bennyhill;
+GRANT ALL PRIVILEGES ON DATABASE bennyhill TO bennyhill;
